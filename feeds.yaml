@@ -1,0 +1,179 @@
+# ═════════════════════════════════════════════
+#  The Reading Room — configuration
+# ═════════════════════════════════════════════
+site:
+  title: "In other news"
+  tagline: "Articles, essays, features and ideas"
+  timezone: "Australia/Sydney"
+
+# How much of each section to show, and how long things stay.
+settings:
+  stories_per_department: 3     # cards in each department row
+  max_per_source: 2             # stops one busy publication filling a department
+  longform_max_age_days: 45     # essays don't go stale quickly
+  video_count: 4
+  video_max_age_days: 45
+  skip_youtube_shorts: true
+  news_count: 8                 # headlines per In Brief column
+  news_max_age_hours: 24
+
+# Departments appear in this order, below the Long Read.
+# The `id` is what feeds refer to in their `section:`.
+# `count` overrides stories_per_department (3 = one row, 6 = two rows).
+departments:
+  - id: ideas
+    label: Ideas
+    blurb: Philosophy, history, culture 
+    count: 6
+  - id: science
+    label: Science & Nature
+    blurb: Science, technology, health and the living planet
+    count: 6
+  - id: reportage
+    label: Reportage
+    blurb: Politcs, etc
+  - id: australia
+    label: Australia
+    blurb: Essays and analysis from Australia
+
+# ─────────────────────────────────────────────
+#  Feeds
+#  section:  a department id above, or video, news-au, news-world
+#  Optional:
+#    per_feed:      max items taken from this source
+#    category_map:  send stories with these tags to another department
+#    lead: false    never use this source for the Long Read
+#    home:          link used in the footer
+#
+#  Feeds marked "unverified" are the standard address for that kind of site
+#  but couldn't be checked. When you run build.py, a ✓ means it worked; a !
+#  means it didn't (see the notes beside it for what to try).
+# ─────────────────────────────────────────────
+feeds:
+
+  # ── Ideas ───────────────────────────────────
+  - name: Aeon
+    url: https://aeon.co/feed.rss
+    home: https://aeon.co
+    section: ideas
+
+  - name: Psyche
+    url: https://psyche.co/feed.rss
+    home: https://psyche.co
+    section: ideas
+
+  - name: Lapham's Quarterly
+    url: https://laphamsquarterly.substack.com/feed
+    home: https://www.laphamsquarterly.org
+    section: ideas
+
+  - name: The New Yorker
+    url: https://www.newyorker.com/feed/culture
+    home: https://www.newyorker.com
+    section: ideas
+    per_feed: 3
+
+  # ── Science & Nature ────────────────────────
+  - name: Nautilus
+    url: https://nautil.us/feed
+    home: https://nautil.us
+    section: science
+
+  - name: Undark
+    url: https://undark.org/feed/
+    home: https://undark.org
+    section: science
+
+  - name: Ars Technica
+    url: https://feeds.arstechnica.com/arstechnica/features   # long-form features only
+    home: https://arstechnica.com
+    section: science
+
+  - name: Orion
+    url: https://orionmagazine.org/feed/
+    home: https://orionmagazine.org
+    section: science
+
+  - name: Atmos
+    url: https://atmos.earth/feed/
+    home: https://atmos.earth
+    section: science
+
+  - name: Outside
+    url: https://www.outsideonline.com/rss/all/rss.xml
+    home: https://www.outsideonline.com
+    section: science
+    per_feed: 2
+    lead: false
+
+  # ── Reportage ───────────────────────────────
+  - name: The New Yorker
+    url: https://www.newyorker.com/feed/magazine/rss      # the weekly issue
+    home: https://www.newyorker.com
+    section: reportage
+    per_feed: 4
+
+  - name: The Intercept
+    url: https://theintercept.com/feed
+    home: https://theintercept.com
+    section: reportage
+    per_feed: 3
+    lead: false
+
+  # ── Australia ───────────────────────────────
+  - name: Inside Story
+    url: https://insidestory.org.au/feed/
+    home: https://insidestory.org.au
+    section: australia
+
+  - name: The Monthly
+    url: https://www.themonthly.com.au/feed.xml           # unverified
+    home: https://www.themonthly.com.au
+    section: australia
+    per_feed: 3
+
+  - name: The Saturday Paper
+    url: https://www.thesaturdaypaper.com.au/feed.xml     # unverified
+    home: https://www.thesaturdaypaper.com.au
+    section: australia
+    per_feed: 3
+    lead: false
+
+  - name: The Conversation
+    url: https://theconversation.com/au/politics/articles.atom   # Politics + Society only
+    home: https://theconversation.com/au
+    section: australia
+    per_feed: 3
+    lead: false
+
+  # ── Video ───────────────────────────────────
+  - name: More Perfect Union
+    url: https://www.youtube.com/feeds/videos.xml?channel_id=UCehBVAPy-bxmnbNARF-_tvA
+    home: https://www.youtube.com/@moreperfectunion
+    section: video
+
+  # ── In Brief: Australia ─────────────────────
+  - name: ABC News
+    url: https://www.abc.net.au/news/feed/10719986/rss.xml
+    home: https://www.abc.net.au/news
+    section: news-au
+    per_feed: 5
+
+  - name: Guardian Australia
+    url: https://www.theguardian.com/australia-news/rss
+    home: https://www.theguardian.com/au
+    section: news-au
+    per_feed: 5
+
+  # ── In Brief: World ─────────────────────────
+  - name: BBC
+    url: https://feeds.bbci.co.uk/news/world/rss.xml
+    home: https://www.bbc.com/news/world
+    section: news-world
+    per_feed: 5
+
+  - name: The Guardian
+    url: https://www.theguardian.com/world/rss
+    home: https://www.theguardian.com/world
+    section: news-world
+    per_feed: 5
