@@ -2,7 +2,7 @@
 #  The Reading Room — configuration
 # ═════════════════════════════════════════════
 site:
-  title: "In other news"
+  title: "In Other News"
   tagline: "Articles, essays, features and ideas"
   timezone: "Australia/Sydney"
 
