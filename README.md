@@ -15,7 +15,7 @@ GitHub Actions rebuilds it every hour and GitHub Pages hosts it, both free.
 ## Try it on your computer
 
 ```bash
-cd ~/mylocalweb/reading-room
+cd ~/mylocalweb/in-other-news
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
@@ -23,7 +23,7 @@ python build.py
 open public/index.html
 ```
 
-Next time, you only need `cd ~/mylocalweb/reading-room`, `source .venv/bin/activate` and `python build.py`.
+Next time, you only need `cd ~/mylocalweb/in-other-news`, `source .venv/bin/activate` and `python build.py`.
 
 ## Put it online (GitHub Pages)
 
@@ -37,8 +37,8 @@ From then on it refreshes every hour by itself.
 ## How the page is laid out
 
 1. **The Long Read**: the newest long-form story with an image.
-2. **Departments**: Ideas, Science & Nature, Reportage, Australia (set in `feeds.yaml`).
-3. **Video**: the latest YouTube uploads (Shorts are skipped).
+2. **Departments**: Ideas, Science & Nature, Politics, Australia (set in `feeds.yaml`).
+3. **Video**: YouTube channels not placed in a department (hidden when empty). YouTube feeds can also go in any department, where they get a play badge.
 4. **In Brief**: text-only headlines from the last 24 hours, Australia and World.
 
 ## Customising (all in `feeds.yaml`)

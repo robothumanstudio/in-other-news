@@ -160,6 +160,8 @@
     .card > :not(.media) { grid-column: 1; }
     .card h3 { font-size: 20px; }
     .card .dek { -webkit-line-clamp: 2; }
+    .card .play { left: 6px; bottom: 6px; width: 26px; height: 26px; }
+    .card .play::before { border-left-width: 9px; border-top-width: 6px; border-bottom-width: 6px; }
     .section-head p { display: none; }
     .brief { padding: 22px 18px 8px; margin-left: -16px; margin-right: -16px; }
     .brief-cols { grid-template-columns: 1fr; gap: 24px; }
@@ -205,7 +207,7 @@
     <div class="cards">
     {% for it in d.stories %}
     <article class="card">
-      {% if it.image %}<a class="media" href="{{ it.link }}"><img src="{{ it.image }}" alt="" loading="lazy" referrerpolicy="no-referrer"></a>{% endif %}
+      {% if it.image %}<a class="media" href="{{ it.link }}"><img src="{{ it.image }}" alt="" loading="lazy" referrerpolicy="no-referrer">{% if it.is_video %}<span class="play" aria-hidden="true"></span>{% endif %}</a>{% endif %}
       {{ meta(it) }}
       <h3 class="hl"><a href="{{ it.link }}">{{ it.title }}</a></h3>
       {% if it.summary %}<p class="dek">{{ it.summary|truncate(220, end="…") }}</p>{% endif %}

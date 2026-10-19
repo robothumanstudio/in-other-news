@@ -103,7 +103,8 @@ def fetch_feed(feed: dict, cfg: dict, now: datetime) -> list[dict]:
         link, title = e.get("link"), clean_text(e.get("title", ""))
         if not link or not title:
             continue
-        if section == "video" and s.get("skip_youtube_shorts", True) and "/shorts/" in link:
+        is_video = "youtube.com/" in link or "youtu.be/" in link
+        if is_video and s.get("skip_youtube_shorts", True) and "/shorts/" in link:
             continue
         date = entry_date(e)
         if date and date < cutoff:
@@ -116,7 +117,8 @@ def fetch_feed(feed: dict, cfg: dict, now: datetime) -> list[dict]:
             "link": link,
             "source": feed["name"],
             "section": section_for(e, feed),
-            "can_lead": feed.get("lead", True),
+            "can_lead": feed.get("lead", True) and not is_video,
+            "is_video": is_video,
             "date": date or now,
             "summary": clean_text(summary),
             "image": None if section in NEWS else find_image(e),

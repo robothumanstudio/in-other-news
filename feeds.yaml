@@ -23,22 +23,24 @@ settings:
 departments:
   - id: ideas
     label: Ideas
-    blurb: Philosophy, history, culture 
+    blurb: Philosophy, history, culture and how to live
     count: 6
   - id: science
     label: Science & Nature
     blurb: Science, technology, health and the living planet
     count: 6
-  - id: reportage
-    label: Reportage
-    blurb: Politcs, etc
+  - id: politics
+    label: Politics
+    blurb: Power, policy and the people it affects, in words and video
+    count: 6
   - id: australia
     label: Australia
-    blurb: Essays and analysis from Australia
+    blurb: Essays and analysis from closer to home
 
 # ─────────────────────────────────────────────
 #  Feeds
 #  section:  a department id above, or video, news-au, news-world
+#            (YouTube feeds can go in any department; they get a play badge)
 #  Optional:
 #    per_feed:      max items taken from this source
 #    category_map:  send stories with these tags to another department
@@ -68,7 +70,7 @@ feeds:
     section: ideas
 
   - name: The New Yorker
-    url: https://www.newyorker.com/feed/culture
+    url: https://www.newyorker.com/feed/magazine/rss      # the weekly issue
     home: https://www.newyorker.com
     section: ideas
     per_feed: 3
@@ -100,25 +102,24 @@ feeds:
     section: science
 
   - name: Outside
-    url: https://www.outsideonline.com/rss/all/rss.xml
+    url: https://www.outsideonline.com/feed/
     home: https://www.outsideonline.com
     section: science
     per_feed: 2
     lead: false
 
-  # ── Reportage ───────────────────────────────
-  - name: The New Yorker
-    url: https://www.newyorker.com/feed/magazine/rss      # the weekly issue
-    home: https://www.newyorker.com
-    section: reportage
-    per_feed: 4
-
+  # ── Politics (articles and video together) ──
   - name: The Intercept
     url: https://theintercept.com/feed
     home: https://theintercept.com
-    section: reportage
+    section: politics
     per_feed: 3
     lead: false
+
+  - name: More Perfect Union
+    url: https://www.youtube.com/feeds/videos.xml?channel_id=UCehBVAPy-bxmnbNARF-_tvA
+    home: https://www.youtube.com/@moreperfectunion
+    section: politics
 
   # ── Australia ───────────────────────────────
   - name: Inside Story
@@ -127,29 +128,22 @@ feeds:
     section: australia
 
   - name: The Monthly
-    url: https://www.themonthly.com.au/feed.xml           # unverified
+    url: https://www.themonthly.com.au/feed.xml
     home: https://www.themonthly.com.au
     section: australia
     per_feed: 3
 
   - name: The Saturday Paper
-    url: https://www.thesaturdaypaper.com.au/feed.xml     # unverified
+    url: https://www.thesaturdaypaper.com.au/feed.xml
     home: https://www.thesaturdaypaper.com.au
     section: australia
     per_feed: 3
     lead: false
 
-  - name: The Conversation
-    url: https://theconversation.com/au/politics/articles.atom   # Politics + Society only
-    home: https://theconversation.com/au
-    section: australia
-    per_feed: 3
-    lead: false
-
   # ── Video ───────────────────────────────────
-  - name: More Perfect Union
-    url: https://www.youtube.com/feeds/videos.xml?channel_id=UCehBVAPy-bxmnbNARF-_tvA
-    home: https://www.youtube.com/@moreperfectunion
+  - name: DW Documentary
+    url: https://www.youtube.com/feeds/videos.xml?channel_id=UCW39zufHfsuGgpLviKh297Q
+    home: https://www.youtube.com/@DWDocumentary
     section: video
 
   # ── In Brief: Australia ─────────────────────
@@ -164,6 +158,13 @@ feeds:
     home: https://www.theguardian.com/au
     section: news-au
     per_feed: 5
+
+  - name: The Conversation AU
+    url: https://theconversation.com/au/articles.atom
+    home: https://theconversation.com/au
+    section: australia
+    per_feed: 5
+    lead: false
 
   # ── In Brief: World ─────────────────────────
   - name: BBC

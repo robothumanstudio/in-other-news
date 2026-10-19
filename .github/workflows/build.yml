@@ -26,6 +26,11 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
+      - uses: actions/cache@v4      # keeps the last good copy of each feed between runs
+        with:
+          path: .cache
+          key: feeds-${{ github.run_id }}
+          restore-keys: feeds-
       - run: python build.py
       - uses: actions/upload-pages-artifact@v3
         with:
