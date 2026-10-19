@@ -162,7 +162,7 @@ feeds:
   - name: The Conversation AU
     url: https://theconversation.com/au/articles.atom
     home: https://theconversation.com/au
-    section: australia
+    section: news-au
     per_feed: 5
     lead: false
 
